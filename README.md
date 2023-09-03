@@ -15,8 +15,7 @@ Data Buddy is a versatile command-line tool designed to simplify data management
 
 # Installation
 ```
-discord.py==2.1.1
-Flask==2.0.1
+colorama==0.4.6
 ```
 To install the requirements run:
 ```
