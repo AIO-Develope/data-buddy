@@ -1,3 +1,3 @@
-def testdef(myarg2):
+def test(arg):
     # Now you can use myarg2 directly in your command logic
-    return f"myarg1: {myarg2}"
+    return f"test: {arg}"

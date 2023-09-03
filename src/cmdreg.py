@@ -29,20 +29,40 @@ class CommandRegistry:
             args = args_str.split()
             expected_args = command_info["args"]
 
-            if len(args) < len(expected_args):
+            # Create separate lists for required and optional args
+            required_args = [arg for arg in expected_args if not arg.startswith("[")]
+            optional_args = [arg[1:-1] for arg in expected_args if arg.startswith("[")]
+
+            # Prepare the args to match the required and optional args
+            prepared_args = []
+            for i, arg in enumerate(args):
+                if i < len(required_args):
+                    prepared_args.append(arg)
+                elif i < len(expected_args):
+                    prepared_args.append(arg)
+                else:
+                    error(f"Too many arguments. Usage: {command_name} {' '.join(expected_args)}")
+                    return
+
+            # Check if all required args are provided
+            if len(prepared_args) < len(required_args):
                 error(f"Too few arguments. Usage: {command_name} {' '.join(expected_args)}")
-            elif len(args) > len(expected_args):
-                error(f"Too many arguments. Usage: {command_name} {' '.join(expected_args)}")
-            else:
-                try:
-                    result = function_to_call(*args)
-                    done(result)
-                except Exception as e:
-                    error(f"Error executing command: {str(e)}")
+                return
+
+            # Set optional args to None if not provided
+            for _ in range(len(prepared_args), len(expected_args)):
+                prepared_args.append(None)
+
+            try:
+                result = function_to_call(*prepared_args)
+                done(result)
+            except Exception as e:
+                error(f"Error executing command: {str(e)}")
 
         else:
             error(f"Command '{command_name}' not found. Use 'help' to see available commands.")
 
 # Register the "test" command with its description and arguments
 registry = CommandRegistry()
-registry.register("test", "modules.test", "testdef", "Description for the 'test' command", ["myarg2"])
+registry.register("test", "modules.test", "test", "this is a test Command", ["[arg]"])
+registry.register("table", "modules.table", "table", "you can create, delete or edit data set tables", ["action", "[name]", "[edit]"])
