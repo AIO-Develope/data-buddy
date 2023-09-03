@@ -7,6 +7,7 @@ folder_path = 'src/data'
 if not os.path.exists(folder_path):
     os.makedirs(folder_path)
 
+
 # Function to create a new table (JSON file)
 def create_table(table_name):
     table = {}  # Initialize an empty table
@@ -18,6 +19,7 @@ def create_table(table_name):
 
     with open(table_path, 'w') as jsonfile:
         json.dump(table, jsonfile)
+
 
 # Function to add a new row (name) to the table
 def add_row(table_name, name):
@@ -32,6 +34,7 @@ def add_row(table_name, name):
     with open(table_path, 'w') as jsonfile:
         json.dump(table, jsonfile)
 
+
 # Function to add a value to a specific row (name) in the table
 def add_value(table_name, row, value):
     table_path = os.path.join(folder_path, f'{table_name}.json')
@@ -45,6 +48,7 @@ def add_value(table_name, row, value):
     with open(table_path, 'w') as jsonfile:
         json.dump(table, jsonfile)
 
+
 # Function to delete a table (JSON file)
 def delete_table(table_name):
     table_path = os.path.join(folder_path, f'{table_name}.json')
@@ -55,11 +59,13 @@ def delete_table(table_name):
     else:
         return False
 
+
 # Function to list all table names
 def list_tables():
     table_files = [file for file in os.listdir(folder_path) if file.endswith('.json')]
     table_names = [os.path.splitext(file)[0] for file in table_files]
     return table_names
+
 
 # Function to list all rows for a specific table
 def list_rows(table_name):
@@ -69,6 +75,7 @@ def list_rows(table_name):
         table = json.load(jsonfile)
 
     return list(table.keys())
+
 
 # Function to list all values for a specific row in a table
 def list_values(table_name, row_name):
@@ -81,6 +88,7 @@ def list_values(table_name, row_name):
     # Format values as a comma-separated string
     values_str = ", ".join(map(str, values))
     return values_str
+
 
 # Function to remove a specific row from a table
 def remove_row(table_name, row_name):
@@ -95,6 +103,7 @@ def remove_row(table_name, row_name):
     with open(table_path, 'w') as jsonfile:
         json.dump(table, jsonfile)
 
+
 # Function to rename a row in a table
 def rename_row(table_name, old_row_name, new_row_name):
     table_path = os.path.join(folder_path, f'{table_name}.json')
@@ -107,6 +116,7 @@ def rename_row(table_name, old_row_name, new_row_name):
 
     with open(table_path, 'w') as jsonfile:
         json.dump(table, jsonfile)
+
 
 # Function to rename a table
 def rename_table(old_table_name, new_table_name):
