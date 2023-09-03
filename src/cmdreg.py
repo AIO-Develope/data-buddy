@@ -1,6 +1,9 @@
 # cmdreg.py
 
+# cmdreg.py
+
 from message_handler.message_types import error, info, done
+import shlex  # Import the shlex module for parsing quoted arguments
 
 class CommandRegistry:
     def __init__(self):
@@ -26,7 +29,9 @@ class CommandRegistry:
             module = __import__(command_info["module"], fromlist=[command_info["function"]])
             function_to_call = getattr(module, command_info["function"])
 
-            args = args_str.split()
+            # Use shlex to parse the arguments, preserving quoted sections
+            args = shlex.split(args_str)
+
             expected_args = command_info["args"]
 
             # Create separate lists for required and optional args
@@ -65,4 +70,4 @@ class CommandRegistry:
 # Register the "test" command with its description and arguments
 registry = CommandRegistry()
 registry.register("test", "modules.test", "test", "this is a test Command", ["[arg]"])
-registry.register("table", "modules.table", "table", "you can create, delete or edit data set tables", ["action", "[name]", "[edit]"])
+registry.register("table", "modules.table", "table", "you can create, delete or edit data set tables", ["action", "[table]", "[var1]", "[var2]"])
