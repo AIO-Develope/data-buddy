@@ -16,6 +16,8 @@
 </div>
 <br>
 
+Attention! I still setup the repo nothing is working and the readme is not correct right now!
+
 Data Buddy is a versatile command-line tool designed to simplify data management and processing tasks. It empowers users to effortlessly create, edit, and manipulate data tables, enabling seamless data input, processing, and export operations.
 
 
