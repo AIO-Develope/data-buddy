@@ -10,9 +10,9 @@
 </h1>
 
 Data Buddy is a versatile command-line tool designed to simplify data management and processing tasks. It empowers users to effortlessly create, edit, and manipulate data tables, enabling seamless data input, processing, and export operations.
-
+<div align="center">
 <img src="https://user-images.githubusercontent.com/69240351/265285425-6d3ed1e6-78ff-4aae-94db-6ca9c6ab76dc.png" align="center" width="40%" height="40%"/>
-
+</div>
 # Installation
 ```
 colorama==0.4.6
