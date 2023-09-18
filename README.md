@@ -4,7 +4,7 @@
     <br>
     <div align="center">
     <img src="https://img.shields.io/badge/Python-3.10.6-blue" align="center"/>
-    <img src="https://img.shields.io/badge/Developing-Active-brightgreen" align="center"/>
+    <img src="https://img.shields.io/badge/Developing-Paused-brightgreen" align="center"/>
     <img src="https://img.shields.io/badge/Version-0.0-green" align="center"/>
     </div>
 </h1>
